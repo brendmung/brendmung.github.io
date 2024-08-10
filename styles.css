@@ -39,3 +39,22 @@
     transform: translateY(0);
   }
 }
+/* Hero Section Blur */
+.hero {
+  filter: blur(2px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.hero:hover {
+  filter: blur(0);
+}
+
+/* Portfolio Item Blur */
+.portfolio-item {
+  filter: blur(4px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.portfolio-item:hover {
+  filter: blur(0);
+}
