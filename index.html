@@ -3,75 +3,646 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brend Mung Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Brend Mungs|Beyond</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+			font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica', Arial, sans-serif;;
+            /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+            background-image: url('wallpaper2.gif');
+            background-size: cover;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.5s;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
+        }
+
+        .start-menu-icon, .taskbar-icon, .taskbar-clock, .music-button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+		.taskbar-icon.active {
+			color: #fff;
+			transform: scale(1.1);
+			box-shadow: 0px 0px 50px rgba(0, 140, 255, 0.6);
+			border-radius: 10px;
+		}
+		
+        .taskbar-icons {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .taskbar-clock {
+            margin-left: auto;
+            white-space: nowrap;
+			margin-right: 20px;
+        }
+
+        .desktop {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .desktop-icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .desktop-icon-container.active {
+            transform: scale(1.1);
+        }
+
+        .desktop-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
+            margin-bottom: 5px;
+        }
+
+        .desktop-icon i {
+            font-size: 36px;
+        }
+
+        .desktop-label {
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .start-menu {
+            position: fixed;
+            bottom: 40px;
+            left: 0px;
+            width: 200px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 10px 10px 0px 0px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .start-menu.active {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .start-menu-item {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .start-menu-item i {
+            margin-right: 10px;
+        }
+
+        .window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            max-width: 600px;
+            height: 80%;
+            max-height: 400px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: scale(0.9) translate(-50%, -50%);
+        }
+
+        .window.show {
+            display: flex;
+            opacity: 1;
+            transform: scale(1) translate(-50%, -50%);
+        }
+
+        .window .title-bar {
+            background: #0078d7;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        .window .content {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+		
+		.no-select {
+    		user-select: none;
+		}	
+
+        .file, .setting-option {
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .file i, .setting-option i {
+            margin-right: 10px;
+        }
+
+        .file:hover, .setting-option:hover {
+            background: rgba(200, 200, 200, 0.7);
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .dark-theme {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-theme .taskbar,
+        .dark-theme .window,
+        .dark-theme .desktop-icon,
+        .dark-theme .start-menu,
+        .dark-theme .file,
+        .dark-theme .setting-option {
+            background: rgba(50, 50, 50, 0.7);
+        }
+
+        .dark-theme .window .title-bar {
+            background: #444;
+        }
+
+        .dark-theme .desktop-icon i,
+        .dark-theme .desktop-label,
+        .dark-theme .start-menu-item,
+        .dark-theme .file,
+        .dark-theme .setting-option {
+            color: white;
+        }
+
+        .boot-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .boot-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .boot-loader {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+		
+		@keyframes fadeInOut {
+			  0% {
+				opacity: 0.4;
+			  }
+			  50% {
+				opacity: 1;
+			  }
+			  100% {
+				opacity: 0.4;
+			  }
+			}
+
+			.fade-in-out {
+			  animation: fadeInOut 2s infinite;
+			  font-family: 'Courier New', Courier, monospace; /* Applies a monospace font */
+			}
+
+
+        .percentage {
+            position: absolute;
+            font-size: 14px;
+            color: #fff;
+			font-family: 'Courier New', Courier, monospace;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-    <!-- Animated Loading Screen -->
-    <div class="loading-screen">
-      <div class="loader"></div>
-    </div>  
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Brend Mung</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
+    <div class="boot-screen">
+        <div class="boot-loader">
+            <p class="fade-in-out">Starting...
+			<span class="percentage">0%</span></p>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-menu-icon"><i class="fas fa-archway"></i></div>
+        <div class="taskbar-icons">
+            <div class="taskbar-icon" data-window="file-manager"><i class="fas fa-folder"></i></div>
+			<div class="taskbar-icon" data-window="settings"><i class="fas fa-cog"></i></div>
+        </div>
+        <div class="music-button"><i class="fas fa-music" id="musicIcon"></i></div>
+        <div class="music-button"><i class="fas fa-signal"></i></div>
+		<div class="taskbar-clock"></div>
+    </div>
+    <div class="desktop">
+        <div class="desktop-icon-container" data-window="about-me">
+            <div class="desktop-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <span class="desktop-label">About Me</span>
+        </div>
+        <div class="desktop-icon-container" data-window="projects">
+            <div class="desktop-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <span class="desktop-label">Projects</span>
+        </div>
+        <div class="desktop-icon-container" data-window="skills">
+            <div class="desktop-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <span class="desktop-label">Skills</span>
+        </div>
+        <div class="desktop-icon-container" data-window="contact">
+            <div class="desktop-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <span class="desktop-label">Contact</span>
+        </div>
+    </div>
+    <div class="start-menu">
+        <div class="start-menu-content">
+            <div class="start-menu-item" data-window="about-me">
+                <i class="fas fa-user"></i> About Me
+            </div>
+            <div class="start-menu-item" data-window="projects">
+                <i class="fas fa-briefcase"></i> Projects
+            </div>
+            <div class="start-menu-item" data-window="skills">
+                <i class="fas fa-tools"></i> Skills
+            </div>
+            <div class="start-menu-item" data-window="contact">
+                <i class="fas fa-envelope"></i> Contact
+            </div>
+        </div>
+    </div>
+    <div class="window" id="about-me">
+        <div class="title-bar">
+            <span>About Me</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>About Me</h2>
+            <p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as JavaScript, Python, React, and Node.js.</p>
+        </div>
+    </div>
+    <div class="window" id="projects">
+        <div class="title-bar">
+            <span>Projects</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Project 1: Online Chat Application</strong><p>Developed a real-time chat application using Firebase and React.</p></li>
+                <li><strong>Project 2: E-commerce Platform</strong><p>Created a full-featured e-commerce platform using Django and React.</p></li>
+                <li><strong>Project 3: AI-Powered Music Generator</strong><p>Designed an AI-powered music generation tool using Python and TensorFlow.</p></li>
             </ul>
         </div>
-    </nav>
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to my portfolio!</h1>
-        <p>I'm Brend Mung, a [Your Profession/Student] with a passion for [Your Interests]</p>
-        <button class="btn btn-primary">Learn More</button>
-    </section>
-    <!-- Portfolio Section -->
-    <section class="portfolio">
-        <h2>My Portfolio</h2>
-        <div class="row">
-            <!-- Portfolio Item 1 -->
-            <div class="col-md-4">
-                <img src="portfolio-item-1.jpg" alt="Portfolio Item 1">
-                <h3>Project 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    </div>
+    <div class="window" id="skills">
+        <div class="title-bar">
+            <span>Skills</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Skills</h2>
+            <ul>
+                <li>JavaScript (React, Node.js)</li>
+                <li>Python (Django, Flask)</li>
+                <li>HTML, CSS, and Responsive Design</li>
+                <li>Database Management (SQL, MongoDB)</li>
+                <li>Version Control (Git, GitHub)</li>
+                <li>Agile Development and Scrum</li>
+            </ul>
+        </div>
+    </div>
+    <div class="window" id="contact">
+        <div class="title-bar">
+            <span>Contact</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch, please feel free to reach out to me via email or LinkedIn.</p>
+            <p><strong>Email:</strong> brendmung@gmail.com</p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/brendmung</a></p>
+        </div>
+    </div>
+    <div class="window" id="file-manager">
+        <div class="title-bar">
+            <span>File Manager</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Files</h2>
+            <div class="file" data-file="file1"><i class="fas fa-file"></i> IMG_202414084556.png</div>
+            <div class="file" data-file="file2"><i class="fas fa-file"></i> IMG_202414085000.png</div>
+            <div class="file" data-file="file3"><i class="fas fa-file"></i> IMG_202320118497.png</div>
+        </div>
+    </div>
+    <div class="window" id="settings">
+        <div class="title-bar">
+            <span>Settings</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Settings</h2>
+            <div class="setting-option">
+                <input type="checkbox" id="toggle-theme">
+                <label for="toggle-theme"> Dark Theme <i class="fas fa-moon"></i></label>
             </div>
-            <!-- Portfolio Item 2 -->
-            <div class="col-md-4">
-                <img src="portfolio-item-2.jpg" alt="Portfolio Item 2">
-                <h3>Project 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-            </div>
-            <!-- Portfolio Item 3 -->
-            <div class="col-md-4">
-                <img src="portfolio-item-3.jpg" alt="Portfolio Item 3">
-                <h3>Project 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            <div class="setting-option">
+                <input type="checkbox" id="toggle-music">
+                <label for="toggle-music"> Background Music <i class="fas fa-music"></i></label>
             </div>
         </div>
-    </section>
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2023 Brend Mung</p>
-    </footer>
-    <!-- Theme Switcher Button -->
-    <button class="theme-switcher" id="theme-switcher">Switch Theme</button>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    </div>
+    <audio id="background-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+		
+
+		
+        document.addEventListener('DOMContentLoaded', () => {
+            const musicButton = document.querySelector('.music-button');
+            const toggleThemeCheckbox = document.getElementById('toggle-theme');
+			const backgroundMusic = document.getElementById('background-music');
+			const toggleMusicCheckbox = document.getElementById('toggle-music');
+			const musicIcon = document.getElementById('musicIcon');
+			
+			
+            // Check and apply theme from local storage
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-theme');
+                toggleThemeCheckbox.checked = true;
+            }
+
+            /*themeButton.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                toggleThemeCheckbox.checked = isDark;
+            });*/
+			
+			musicButton.addEventListener('click', () => {
+                if (toggleMusicCheckbox.checked) {
+					toggleMusicCheckbox.checked = false;
+					musicIcon.classList.remove('fa-pause');
+					musicIcon.classList.add('fa-music');
+					backgroundMusic.pause();
+                } else {
+					toggleMusicCheckbox.checked = true;
+					musicIcon.classList.remove('fa-music');
+					musicIcon.classList.add('fa-pause');
+					backgroundMusic.play();
+				}
+            });
+
+            // Initialize clock
+            function updateClock() {
+                const clock = document.querySelector('.taskbar-clock');
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+				const seconds = now.getSeconds().toString().padStart(2, '0');
+                clock.textContent = `${hours}:${minutes}:${seconds}`;
+            }
+
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // Event listeners for start menu and windows
+            document.querySelector('.start-menu-icon').addEventListener('click', () => {
+                const startMenu = document.querySelector('.start-menu');
+                if (startMenu.classList.contains('active')) {
+                    startMenu.classList.remove('active');
+                    setTimeout(() => {
+                        startMenu.style.display = 'none';
+                    }, 300);
+                } else {
+                    startMenu.style.display = 'flex';
+                    setTimeout(() => {
+                        startMenu.classList.add('active');
+                    }, 10);
+                }
+            });
+
+            document.querySelectorAll('.desktop-icon-container, .start-menu-item, .taskbar-icon').forEach(icon => {
+                icon.addEventListener('click', (e) => {
+                    const windowId = e.currentTarget.getAttribute('data-window');
+                    const targetWindow = document.getElementById(windowId);
+
+                    // Close all open windows
+                    document.querySelectorAll('.window').forEach(win => {
+                        win.classList.remove('show');
+                    });
+
+                    // Remove active class from all icons
+                    document.querySelectorAll('.desktop-icon-container').forEach(icon => {
+                        icon.classList.remove('active');
+                    });
+					
+					document.querySelectorAll('.taskbar-icon').forEach(icon => {
+                        icon.classList.remove('active');
+                    });
+
+                    // Open the selected window
+                    if (targetWindow) {
+                        targetWindow.style.display = 'flex'; // Ensure the display is set before transitioning
+                        setTimeout(() => {
+                            targetWindow.classList.add('show');
+                        }, 10);
+
+                        // Highlight the selected icon
+                        if (e.currentTarget.classList.contains('desktop-icon-container')) {
+                            e.currentTarget.classList.add('active');
+                        }
+						if (e.currentTarget.classList.contains('taskbar-icon')) {
+                            e.currentTarget.classList.add('active');
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('.close-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const window = e.target.closest('.window');
+                    window.classList.remove('show');
+                    setTimeout(() => {
+                        window.style.display = 'none';
+                    }, 300);
+
+                    // Remove active class from all icons
+                    document.querySelectorAll('.desktop-icon-container').forEach(icon => {
+                        icon.classList.remove('active');
+                    });
+					document.querySelectorAll('.taskbar-icon').forEach(icon => {
+                        icon.classList.remove('active');
+                    });
+                });
+            });
+
+            // File manager functionality
+            document.querySelectorAll('.file').forEach(file => {
+                file.addEventListener('click', () => {
+                    alert('File unavailable for viewing/editing!');
+                });
+            });
+
+            // Dragging functionality for windows
+            /*const windows = document.querySelectorAll('.window');
+windows.forEach(win => {
+    const titleBar = win.querySelector('.title-bar');
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    titleBar.addEventListener('mousedown', (e) => {
+        e.preventDefault(); // Prevent default text selection behavior
+        isDragging = true;
+        offsetX = e.clientX - win.getBoundingClientRect().left;
+        offsetY = e.clientY - win.getBoundingClientRect().top;
+        win.style.zIndex = 1000;
+        document.body.classList.add('no-select'); // Add no-select class to body
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            win.style.left = `${e.clientX - offsetX}px`;
+            win.style.top = `${e.clientY - offsetY}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        win.style.zIndex = '';
+        document.body.classList.remove('no-select'); // Remove no-select class from body
+    });
+});*/
+
+
+            // Settings window functionality
+            toggleThemeCheckbox.addEventListener('change', () => {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+
+            toggleMusicCheckbox.addEventListener('change', () => {
+                if (toggleMusicCheckbox.checked) {
+                    backgroundMusic.play();
+					musicIcon.classList.remove('fa-music');
+					musicIcon.classList.add('fa-pause');
+                } else {
+                    backgroundMusic.pause();
+					musicIcon.classList.remove('fa-pause');
+					musicIcon.classList.add('fa-music');
+                }
+            });
+        });
+		
+			document.addEventListener('DOMContentLoaded', () => {
+            const bootScreen = document.querySelector('.boot-screen');
+            const percentageText = bootScreen.querySelector('.percentage');
+			
+            let percentage = 0;
+
+            const interval = setInterval(() => {
+                if (percentage < 100) {
+                    percentage += Math.floor(Math.random() * 3) + 1; // Random increment to simulate real-time loading
+                    if (percentage > 100) percentage = 100; // Ensure percentage doesn't exceed 100
+                    percentageText.textContent = `${percentage}%`;
+                } else {
+                    clearInterval(interval);
+                    bootScreen.classList.add('hidden');
+                    setTimeout(() => {
+                        bootScreen.style.display = 'none';
+                    }, 1000);
+                }
+            }, 100); // Adjust the interval timing as needed
+        });
+    </script>
 </body>
 </html>
