@@ -1,14 +1,13 @@
 body {
     margin: 0;
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica', Arial, sans-serif;
-    background-image: url('wall_light.jpg');
+    background-image: url('assets/wall_light.jpg');
     background-color: #000;
     background-size: cover;
     height: 100vh;
     overflow: hidden;
     transition: background-color 0.5s;
     transition: background-image 1.0s ease;
-    user-select: none;
 }
 
 canvas {
@@ -302,7 +301,7 @@ canvas {
 .dark-theme {
     background-color: #000;
     color: white;
-    background-image: url(wall_dark.jpg);
+    background-image: url(assets/wall_dark.jpg);
 }
 
 .dark-theme .taskbar,
