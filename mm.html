@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brend Mung | Beyond™</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	
+	<canvas id="background"></canvas>
+	
+    <div class="boot-screen">
+    <div class="boot-loader">
+        <p class="fade-in-out">Starting...
+        <span class="percentage">0%</span></p>
+    </div>
+    <div class="asset-list" style="display:none;">
+        <img src="wall2_opt.jpg" alt="Background">
+        <img src="wall_dark.jpg" alt="Dark Background">
+        <img src="home.svg" alt="Logo">
+        <img src="file_manager.svg" alt="File Manager">
+        <img src="preferences.svg" alt="Preferences">
+        <img src="user.svg" alt="User">
+        <img src="projects.svg" alt="Projects">
+        <img src="skills.svg" alt="Skills">
+        <img src="contact.svg" alt="Contact">
+    </div>
+</div>
+
+    <div class="taskbar">
+        <div class="start-menu-icon"><img src="home.svg" alt="" width="40" height="40"/></div>
+        <div class="taskbar-icons">
+            <div class="taskbar-icon" data-window="file_manager"><img src="file_manager.svg" alt=""/></div>
+			<div class="taskbar-icon" data-window="settings"><img src="preferences.svg" alt=""/></div>
+        </div>
+        <div class="music-button"><i class="fas fa-music" id="musicIcon"></i></div>
+        <div class="music-button"><i class="fas fa-signal"></i></div>
+		<div class="taskbar-clock"></div>
+    </div>
+    <div class="desktop">
+        <div class="desktop-icon-container" data-window="about-me">
+            <div class="desktop-icon">
+                <img src="user.svg" alt=""/>
+            </div>
+            <span class="desktop-label">About Me</span>
+        </div>
+        <div class="desktop-icon-container" data-window="projects">
+            <div class="desktop-icon">
+                <img src="projects.svg" alt=""/>
+            </div>
+            <span class="desktop-label">Projects</span>
+        </div>
+        <div class="desktop-icon-container" data-window="skills">
+            <div class="desktop-icon">
+                <img src="skills.svg" alt=""/>
+            </div>
+            <span class="desktop-label">Skills</span>
+        </div>
+        <div class="desktop-icon-container" data-window="contact">
+            <div class="desktop-icon">
+                <img src="contact.svg" alt=""/>
+            </div>
+            <span class="desktop-label">Contact</span>
+        </div>
+    </div>
+    <div class="start-menu">
+        <div class="start-menu-content">
+            <div class="start-menu-item" data-window="about-me">
+                <i class="fas fa-user"></i> About Me
+            </div>
+            <div class="start-menu-item" data-window="projects">
+                <i class="fas fa-briefcase"></i> Projects
+            </div>
+            <div class="start-menu-item" data-window="skills">
+                <i class="fas fa-tools"></i> Skills
+            </div>
+            <div class="start-menu-item" data-window="contact">
+                <i class="fas fa-envelope"></i> Contact
+            </div>
+        </div>
+    </div>
+    <div class="window" id="about-me">
+        <div class="title-bar">
+            <span>About Me</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>About Me</h2>
+            <p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as Java, Python, React, and Node.js.</p>
+        </div>
+    </div>
+    <div class="window" id="projects">
+        <div class="title-bar">
+            <span>Projects</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Project 1: Online Chat Application</strong><p>Developed a real-time chat application using Firebase and React.</p></li>
+                <li><strong>Project 2: E-commerce Platform</strong><p>Created a full-featured e-commerce platform using Django and React.</p></li>
+                <li><strong>Project 3: AI-Powered Music Generator</strong><p>Designed an AI-powered music generation tool using Python and TensorFlow.</p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="window" id="skills">
+        <div class="title-bar">
+            <span>Skills</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Skills</h2>
+            <ul>
+				<li>Java (Android Apps)</li>
+				<li>Python</li>
+                <li>JavaScript</li>
+                <li>HTML, CSS</li>
+                <li>A bit of C, C++</li>
+            </ul>
+        </div>
+    </div>
+    <div class="window" id="contact">
+        <div class="title-bar">
+            <span>Contact</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch, please feel free to reach out to me via email or LinkedIn.</p>
+            <p><strong>Email:</strong> brendmung@gmail.com</p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brendmung" target="_blank">linkedin.com/in/brendmung</a></p>
+        </div>
+    </div>
+    <div class="window" id="file_manager">
+        <div class="title-bar">
+            <span>File Manager</span>
+            <button class="close-button">×</button>
+        </div>
+        <div class="content">
+            <h2>Files</h2>
+            <div class="file" data-file="file1"><i class="fas fa-folder-open"></i> apps</div>
+            <div class="file" data-file="file2"><i class="fas fa-folder-open"></i> ml_models</div>
+            <div class="file" data-file="file3"><i class="fas fa-folder-open"></i> py_scripts</div>
+        </div>
+    </div>
+    <div class="window" id="settings">
+    <div class="title-bar">
+        <span>Settings</span>
+        <button class="close-button">×</button>
+    </div>
+    <div class="content">
+        <h2>Settings</h2>
+        <div class="settings-grid">
+            <div class="setting-option">
+                <input type="checkbox" id="toggle-theme">
+                <label for="toggle-theme">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Theme</span>
+                </label>
+            </div>
+            <div class="setting-option">
+                <input type="checkbox" id="toggle-music">
+                <label for="toggle-music">
+                    <i class="fas fa-music"></i>
+                    <span>Background Music</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+    <audio id="background-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script src="scripts.js"></script>
+	<script src="background.js"></script>
+</body>
+</html>
