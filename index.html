@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brend Mung | Beyond™</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 	
@@ -17,7 +16,7 @@
         <span class="percentage">0%</span></p>
     </div>
     <div class="asset-list" style="display:none;">
-        <img src="wall2_opt.jpg" alt="Background">
+        <img src="wall_light.jpg" alt="Background">
         <img src="wall_dark.jpg" alt="Dark Background">
         <img src="home.svg" alt="Logo">
         <img src="file_manager.svg" alt="File Manager">
@@ -88,7 +87,9 @@
         </div>
         <div class="content">
             <h2>About Me</h2>
-            <p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as Java, Python, React, and Node.js.</p>
+				<div class= "semi-bg">
+					<p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as Java, Python, React, and Node.js.</p>
+				</div>
         </div>
     </div>
     <div class="window" id="projects">
@@ -111,7 +112,7 @@
             <button class="close-button">×</button>
         </div>
         <div class="content">
-            <h2>Skills</h2>
+            <h2>My Skills</h2>
             <ul>
 				<li>Java (Android Apps)</li>
 				<li>Python</li>
@@ -127,11 +128,24 @@
             <button class="close-button">×</button>
         </div>
         <div class="content">
-            <h2>Contact</h2>
-            <p>If you would like to get in touch, please feel free to reach out to me via email or LinkedIn.</p>
-            <p><strong>Email:</strong> brendmung@gmail.com</p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brendmung" target="_blank">linkedin.com/in/brendmung</a></p>
-        </div>
+    <h2>Contact</h2>
+    <p>If you would like to get in touch, please feel free to reach out through any of the following platforms:</p>
+    <div class="contact-grid">
+        <a href="mailto:brendmung@gmail.com" class="contact-button email">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://www.facebook.com/yourprofile" target="_blank" class="contact-button facebook">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://x.com/yourprofile" target="_blank" class="contact-button x">
+            <i class="fa-brands fa-x-twitter"></i> X
+        </a>
+        <a href="https://github.com/yourprofile" target="_blank" class="contact-button github">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+    </div>
+</div>
+
     </div>
     <div class="window" id="file_manager">
         <div class="title-bar">
@@ -174,7 +188,6 @@
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <script src="scripts.js"></script>
 	<script src="background.js"></script>
 </body>
 </html>
