@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let loadedAssets = 0;
     const totalAssets = assets.length;
     const startTime = Date.now();
-    const minLoadTime = 5000; // 5 seconds in milliseconds
+    const minLoadTime = 0; // 5 seconds in milliseconds
 
     // Check and apply theme from local storage
     if (localStorage.getItem('theme') === 'dark') {
