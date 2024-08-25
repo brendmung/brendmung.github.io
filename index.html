@@ -3,193 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brend Mung | Beyond™</title>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>USD/ZWG Exchange Rates</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-	
-	<canvas id="background"></canvas>
-	
-    <div class="boot-screen">
-    <div class="boot-loader">
-        <p class="fade-in-out">Starting...
-        <span class="percentage">0%</span></p>
-    </div>
-    <div class="asset-list" style="display:none;">
-        <img src="assets/wall_light.jpg" alt="Background">
-        <img src="assets/wall_dark.jpg" alt="Dark Background">
-        <img src="assets/home.svg" alt="Logo">
-        <img src="assets/file_manager.svg" alt="File Manager">
-        <img src="assets/preferences.svg" alt="Preferences">
-        <img src="assets/user.svg" alt="User">
-        <img src="assets/projects.svg" alt="Projects">
-        <img src="assets/skills.svg" alt="Skills">
-        <img src="assets/contact.svg" alt="Contact">
-    </div>
-</div>
+    <h1>USD/ZWG Exchange Rates</h1>
+    <table id="ratesTable">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>BID</th>
+                <th>ASK</th>
+                <th>MID_RATE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
 
-    <div class="taskbar">
-        <div class="start-menu-icon"><img src="assets/home.svg" alt="" width="40" height="40"/></div>
-        <div class="taskbar-icons">
-            <div class="taskbar-icon" data-window="file_manager"><img src="assets/file_manager.svg" alt=""/></div>
-			<div class="taskbar-icon" data-window="settings"><img src="assets/preferences.svg" alt=""/></div>
-        </div>
-        <div class="music-button"><i class="fas fa-music" id="musicIcon"></i></div>
-        <div class="music-button"><i class="fas fa-signal"></i></div>
-		<div class="taskbar-clock"></div>
-    </div>
-    <div class="desktop">
-        <div class="desktop-icon-container" data-window="about-me">
-            <div class="desktop-icon">
-                <img src="assets/user.svg" alt=""/>
-            </div>
-            <span class="desktop-label">About Me</span>
-        </div>
-        <div class="desktop-icon-container" data-window="projects">
-            <div class="desktop-icon">
-                <img src="assets/projects.svg" alt=""/>
-            </div>
-            <span class="desktop-label">Projects</span>
-        </div>
-        <div class="desktop-icon-container" data-window="skills">
-            <div class="desktop-icon">
-                <img src="assets/skills.svg" alt=""/>
-            </div>
-            <span class="desktop-label">Skills</span>
-        </div>
-        <div class="desktop-icon-container" data-window="contact">
-            <div class="desktop-icon">
-                <img src="assets/contact.svg" alt=""/>
-            </div>
-            <span class="desktop-label">Contact</span>
-        </div>
-    </div>
-    <div class="start-menu">
-        <div class="start-menu-content">
-            <div class="start-menu-item" data-window="about-me">
-                <i class="fas fa-user"></i> About Me
-            </div>
-            <div class="start-menu-item" data-window="projects">
-                <i class="fas fa-briefcase"></i> Projects
-            </div>
-            <div class="start-menu-item" data-window="skills">
-                <i class="fas fa-tools"></i> Skills
-            </div>
-            <div class="start-menu-item" data-window="contact">
-                <i class="fas fa-envelope"></i> Contact
-            </div>
-        </div>
-    </div>
-    <div class="window" id="about-me">
-        <div class="title-bar">
-            <span>About Me</span>
-            <button class="close-button">×</button>
-        </div>
-        <div class="content">
-            <h2>About Me</h2>
-				<div class= "semi-bg">
-					<p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as Java, Python, React, and Node.js.</p>
-				</div>
-        </div>
-    </div>
-    <div class="window" id="projects">
-        <div class="title-bar">
-            <span>Projects</span>
-            <button class="close-button">×</button>
-        </div>
-        <div class="content">
-            <h2>Projects</h2>
-            <ul>
-                <li><strong>Project 1: Online Chat Application</strong><p>Developed a real-time chat application using Firebase and React.</p></li>
-                <li><strong>Project 2: E-commerce Platform</strong><p>Created a full-featured e-commerce platform using Django and React.</p></li>
-                <li><strong>Project 3: AI-Powered Music Generator</strong><p>Designed an AI-powered music generation tool using Python and TensorFlow.</p></li>
-            </ul>
-        </div>
-    </div>
-    <div class="window" id="skills">
-        <div class="title-bar">
-            <span>Skills</span>
-            <button class="close-button">×</button>
-        </div>
-        <div class="content">
-            <h2>My Skills</h2>
-            <ul>
-		<li>Java (Android Apps)</li>
-		<li>Python</li>
-                <li>JavaScript</li>
-                <li>HTML, CSS</li>
-                <li>A bit of C, C++</li>
-            </ul>
-        </div>
-    </div>
-    <div class="window" id="contact">
-        <div class="title-bar">
-            <span>Contact</span>
-            <button class="close-button">×</button>
-        </div>
-        <div class="content">
-    <h2>Contact</h2>
-    <p>If you would like to get in touch, please feel free to reach out through any of the following platforms:</p>
-    <div class="contact-grid">
-        <a href="mailto:brendmung@gmail.com" class="contact-button email">
-            <i class="fas fa-envelope"></i> Email
-        </a>
-        <a href="https://www.facebook.com/brendmung" target="_blank" class="contact-button facebook">
-            <i class="fab fa-facebook"></i> Facebook
-        </a>
-        <a href="https://x.com/brendmung" target="_blank" class="contact-button x">
-            <i class="fa-brands fa-x-twitter"></i> X
-        </a>
-        <a href="https://github.com/brendmung" target="_blank" class="contact-button github">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-    </div>
-</div>
-
-    </div>
-    <div class="window" id="file_manager">
-        <div class="title-bar">
-            <span>File Manager</span>
-            <button class="close-button">×</button>
-        </div>
-        <div class="content">
-            <h2>Files</h2>
-            <div class="file" data-file="file1"><i class="fas fa-folder-open"></i> apps</div>
-            <div class="file" data-file="file2"><i class="fas fa-folder-open"></i> ml_models</div>
-            <div class="file" data-file="file3"><i class="fas fa-folder-open"></i> py_scripts</div>
-        </div>
-    </div>
-    <div class="window" id="settings">
-    <div class="title-bar">
-        <span>Settings</span>
-        <button class="close-button">×</button>
-    </div>
-    <div class="content">
-        <h2>Settings</h2>
-        <div class="settings-grid">
-            <div class="setting-option">
-                <input type="checkbox" id="toggle-theme">
-                <label for="toggle-theme">
-                    <i class="fas fa-moon"></i>
-                    <span>Dark Theme</span>
-                </label>
-            </div>
-            <div class="setting-option">
-                <input type="checkbox" id="toggle-music">
-                <label for="toggle-music">
-                    <i class="fas fa-music"></i>
-                    <span>Background Music</span>
-                </label>
-            </div>
-        </div>
-    </div>
-</div>
-    <audio id="background-music" loop>
-        <source src="assets/music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-	<script src="background.js"></script>
-	<script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('https://usd-zwg-exchange-rate.streamlit.app/api/exchange_rates')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#ratesTable tbody');
+                    data.forEach(rate => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${rate.Date}</td>
+                            <td>${rate.BID.toFixed(4)}</td>
+                            <td>${rate.ASK.toFixed(4)}</td>
+                            <td>${rate.MID_RATE.toFixed(4)}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.body.innerHTML += '<p>Error loading data. Please try again later.</p>';
+                });
+        });
+    </script>
 </body>
 </html>
