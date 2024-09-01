@@ -42,6 +42,15 @@ canvas {
     border-radius: 15px;
 }
 
+@media (min-width: 1024px) {
+        .taskbar {
+            width: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+
 .start-menu-icon {
     padding: 10px;
     cursor: pointer;
