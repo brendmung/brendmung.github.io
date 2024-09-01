@@ -312,10 +312,12 @@ canvas {
     align-items: center;
     border-radius: 50%;
     transition: background-color 0.3s ease;
+    padding-top: -2px;
 }
 
 .close-button:hover {
     background-color: rgba(255, 0, 0, 0.7);
+    padding-top: -2px;
 }
 
 .dark-theme {
