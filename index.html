@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brend Mung | Beyond™</title>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -18,11 +18,12 @@
             flex-direction: column;
             width: 100%;
             height: 100%;
-            background-color: #FFFFFF;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparency effect */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
             margin: 0 auto;
+            backdrop-filter: blur(10px); /* Blur effect */
         }
 
         .file-manager .title-bar {
@@ -30,9 +31,10 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 15px;
-            background-color: #0078D4;
+            background-color: rgba(0, 120, 212, 0.9); /* Semi-transparent */
             color: white;
             font-size: 14px;
+            backdrop-filter: blur(5px);
         }
 
         .file-manager .title-bar .title {
@@ -66,8 +68,9 @@
         .file-manager .toolbar {
             display: flex;
             padding: 10px;
-            background-color: #F3F3F3;
+            background-color: rgba(243, 243, 243, 0.8); /* Semi-transparent */
             border-bottom: 1px solid #E1E1E1;
+            backdrop-filter: blur(5px);
         }
 
         .file-manager .toolbar button {
@@ -83,14 +86,15 @@
         }
 
         .file-manager .toolbar button:hover {
-            background-color: #E1E1E1;
+            background-color: rgba(225, 225, 225, 0.7); /* Semi-transparent */
         }
 
         .file-manager .sidebar {
             width: 200px;
-            background-color: #F9F9F9;
+            background-color: rgba(249, 249, 249, 0.8); /* Semi-transparent */
             border-right: 1px solid #E1E1E1;
             padding: 10px;
+            backdrop-filter: blur(5px);
         }
 
         .file-manager .sidebar ul {
@@ -246,9 +250,7 @@
         </div>
         <div class="content">
             <h2>About Me</h2>
-				<div class= "semi-bg">
-					<p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as Java, Python, React, and Node.js.</p>
-				</div>
+            <p>Hello! I'm Brend Mung, a passionate software developer with a knack for creating innovative and user-friendly applications. I have experience in various programming languages and a deep love for learning new technologies.</p>
         </div>
     </div>
 
@@ -328,25 +330,25 @@
             <div class="main-content">
                 <div class="sidebar">
                     <ul>
-                        <li class="active">Home</li>
-                        <li>Documents</li>
-                        <li>Pictures</li>
-                        <li>Downloads</li>
-                        <li>Music</li>
+                        <li class="active" data-folder="home">Home</li>
+                        <li data-folder="documents">Documents</li>
+                        <li data-folder="pictures">Pictures</li>
+                        <li data-folder="downloads">Downloads</li>
+                        <li data-folder="music">Music</li>
                     </ul>
                 </div>
                 <div class="content-area">
                     <div class="breadcrumbs">Home</div>
                     <div class="file-list">
-                        <div class="file-item">
+                        <div class="file-item" data-folder="apps">
                             <img src="assets/file_icon.svg" alt="Folder">
                             <div class="file-name">apps</div>
                         </div>
-                        <div class="file-item">
+                        <div class="file-item" data-folder="ml_models">
                             <img src="assets/file_icon.svg" alt="Folder">
                             <div class="file-name">ml_models</div>
                         </div>
-                        <div class="file-item">
+                        <div class="file-item" data-folder="py_scripts">
                             <img src="assets/file_icon.svg" alt="Folder">
                             <div class="file-name">py_scripts</div>
                         </div>
