@@ -6,170 +6,11 @@
     <title>Brend Mung | Beyond™</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F3F3F3;
-        }
-
-        .file-manager {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* Transparency effect */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 0 auto;
-            backdrop-filter: blur(10px); /* Blur effect */
-        }
-
-        .file-manager .title-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            background-color: rgba(0, 120, 212, 0.9); /* Semi-transparent */
-            color: white;
-            font-size: 14px;
-            backdrop-filter: blur(5px);
-        }
-
-        .file-manager .title-bar .title {
-            font-weight: bold;
-        }
-
-        .file-manager .title-bar .window-controls {
-            display: flex;
-            gap: 10px;
-        }
-
-        .file-manager .title-bar .window-controls div {
-            width: 12px;
-            height: 12px;
-            background-color: white;
-            border-radius: 50%;
-        }
-
-        .file-manager .title-bar .window-controls .minimize {
-            background-color: #FFD700;
-        }
-
-        .file-manager .title-bar .window-controls .maximize {
-            background-color: #00FF00;
-        }
-
-        .file-manager .title-bar .window-controls .close {
-            background-color: #FF4500;
-        }
-
-        .file-manager .toolbar {
-            display: flex;
-            padding: 10px;
-            background-color: rgba(243, 243, 243, 0.8); /* Semi-transparent */
-            border-bottom: 1px solid #E1E1E1;
-            backdrop-filter: blur(5px);
-        }
-
-        .file-manager .toolbar button {
-            border: none;
-            background: none;
-            padding: 5px 10px;
-            margin-right: 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #0078D4;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .file-manager .toolbar button:hover {
-            background-color: rgba(225, 225, 225, 0.7); /* Semi-transparent */
-        }
-
-        .file-manager .sidebar {
-            width: 200px;
-            background-color: rgba(249, 249, 249, 0.8); /* Semi-transparent */
-            border-right: 1px solid #E1E1E1;
-            padding: 10px;
-            backdrop-filter: blur(5px);
-        }
-
-        .file-manager .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .file-manager .sidebar ul li {
-            padding: 8px 5px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            color: #333;
-        }
-
-        .file-manager .sidebar ul li:hover,
-        .file-manager .sidebar ul li.active {
-            background-color: #0078D4;
-            color: white;
-        }
-
-        .file-manager .content-area {
-            flex: 1;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .file-manager .content-area .breadcrumbs {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .file-manager .content-area .file-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .file-manager .content-area .file-list .file-item {
-            width: 120px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #E1E1E1;
-            border-radius: 5px;
-            background-color: #FFFFFF;
-            cursor: pointer;
-            transition: box-shadow 0.3s;
-        }
-
-        .file-manager .content-area .file-list .file-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .file-manager .content-area .file-list .file-item img {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 5px;
-        }
-
-        .file-manager .content-area .file-list .file-item .file-name {
-            font-size: 12px;
-            color: #333;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
 </head>
 <body>
-	
-	<canvas id="background"></canvas>
-	
+    
+    <canvas id="background"></canvas>
+    
     <div class="boot-screen">
         <div class="boot-loader">
             <p class="fade-in-out">Starting...
@@ -192,13 +33,12 @@
         <div class="start-menu-icon"><img src="assets/home.svg" alt="" width="40" height="40"/></div>
         <div class="taskbar-icons">
             <div class="taskbar-icon" data-window="file_manager"><img src="assets/file_manager.svg" alt=""/></div>
-			<div class="taskbar-icon" data-window="settings"><img src="assets/preferences.svg" alt=""/></div>
+            <div class="taskbar-icon" data-window="settings"><img src="assets/preferences.svg" alt=""/></div>
         </div>
         <div class="music-button"><i class="fas fa-music" id="musicIcon"></i></div>
         <div class="music-button"><i class="fas fa-signal"></i></div>
-		<div class="taskbar-clock"></div>
+        <div class="taskbar-clock"></div>
     </div>
-
     <div class="desktop">
         <div class="desktop-icon-container" data-window="about-me">
             <div class="desktop-icon">
@@ -225,7 +65,6 @@
             <span class="desktop-label">Contact</span>
         </div>
     </div>
-
     <div class="start-menu">
         <div class="start-menu-content">
             <div class="start-menu-item" data-window="about-me">
@@ -242,7 +81,6 @@
             </div>
         </div>
     </div>
-
     <div class="window" id="about-me">
         <div class="title-bar">
             <span>About Me</span>
@@ -250,10 +88,11 @@
         </div>
         <div class="content">
             <h2>About Me</h2>
-            <p>Hello! I'm Brend Mung, a passionate software developer with a knack for creating innovative and user-friendly applications. I have experience in various programming languages and a deep love for learning new technologies.</p>
+            <div class= "semi-bg">
+                <p>Hello! I'm Brend Mung, a passionate software developer with expertise in creating innovative solutions. I specialize in front-end and back-end development, and I am proficient in various programming languages and frameworks such as Java, Python, React, and Node.js.</p>
+            </div>
         </div>
     </div>
-
     <div class="window" id="projects">
         <div class="title-bar">
             <span>Projects</span>
@@ -268,7 +107,6 @@
             </ul>
         </div>
     </div>
-
     <div class="window" id="skills">
         <div class="title-bar">
             <span>Skills</span>
@@ -278,14 +116,13 @@
             <h2>My Skills</h2>
             <ul>
                 <li>Java (Android Apps)</li>
-		        <li>Python</li>
+                <li>Python</li>
                 <li>JavaScript</li>
                 <li>HTML, CSS</li>
                 <li>A bit of C, C++</li>
             </ul>
         </div>
     </div>
-
     <div class="window" id="contact">
         <div class="title-bar">
             <span>Contact</span>
@@ -310,54 +147,34 @@
             </div>
         </div>
     </div>
-
-    <!-- Updated File Manager Window -->
     <div class="window" id="file_manager">
-        <div class="file-manager">
-            <div class="title-bar">
-                <span class="title">File Manager</span>
-                <div class="window-controls">
-                    <div class="minimize"></div>
-                    <div class="maximize"></div>
-                    <div class="close"></div>
+        <div class="title-bar">
+            <span>File Manager</span>
+            <button class="close-button">✖</button>
+        </div>
+        <div class="file-manager-content">
+            <div class="file-manager-header">
+                <button class="back-button"><i class="fas fa-arrow-left"></i> Back</button>
+                <div class="file-manager-path">
+                    <i class="fas fa-home"></i> Home
                 </div>
             </div>
-            <div class="toolbar">
-                <button>New Folder</button>
-                <button>Upload</button>
-                <button>Share</button>
-            </div>
-            <div class="main-content">
-                <div class="sidebar">
-                    <ul>
-                        <li class="active" data-folder="home">Home</li>
-                        <li data-folder="documents">Documents</li>
-                        <li data-folder="pictures">Pictures</li>
-                        <li data-folder="downloads">Downloads</li>
-                        <li data-folder="music">Music</li>
-                    </ul>
+            <div class="file-manager-grid">
+                <div class="file" data-file="file1">
+                    <i class="fas fa-folder-open"></i>
+                    <span class="file-name">Apps</span>
                 </div>
-                <div class="content-area">
-                    <div class="breadcrumbs">Home</div>
-                    <div class="file-list">
-                        <div class="file-item" data-folder="apps">
-                            <img src="assets/file_icon.svg" alt="Folder">
-                            <div class="file-name">apps</div>
-                        </div>
-                        <div class="file-item" data-folder="ml_models">
-                            <img src="assets/file_icon.svg" alt="Folder">
-                            <div class="file-name">ml_models</div>
-                        </div>
-                        <div class="file-item" data-folder="py_scripts">
-                            <img src="assets/file_icon.svg" alt="Folder">
-                            <div class="file-name">py_scripts</div>
-                        </div>
-                    </div>
+                <div class="file" data-file="file2">
+                    <i class="fas fa-folder-open"></i>
+                    <span class="file-name">ML Models</span>
+                </div>
+                <div class="file" data-file="file3">
+                    <i class="fas fa-folder-open"></i>
+                    <span class="file-name">Python Scripts</span>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="window" id="settings">
         <div class="title-bar">
             <span>Settings</span>
@@ -369,26 +186,13 @@
                 <div class="setting-option">
                     <input type="checkbox" id="toggle-theme">
                     <label for="toggle-theme">
-                        <i class="fas fa-moon"></i>
-                        <span>Dark Theme</span>
-                    </label>
-                </div>
-                <div class="setting-option">
-                    <input type="checkbox" id="toggle-music">
-                    <label for="toggle-music">
-                        <i class="fas fa-music"></i>
-                        <span>Background Music</span>
+                        <i class="fas fa-moon"></i> Dark Mode
                     </label>
                 </div>
             </div>
         </div>
     </div>
-
-    <audio id="background-music" loop>
-        <source src="assets/music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-	<script src="background.js"></script>
-	<script src="scripts.js"></script>
+    <div class="background-overlay"></div>
+    <script src="script.js"></script>
 </body>
 </html>
