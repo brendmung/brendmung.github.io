@@ -149,17 +149,34 @@
 
     </div>
     <div class="window" id="file_manager">
-        <div class="title-bar">
-            <span>File Manager</span>
-            <button class="close-button">✖</button>
+    <div class="title-bar">
+        <span>File Manager</span>
+        <button class="close-button">✖</button>
+    </div>
+    <div class="file-manager-content">
+        <div class="file-manager-header">
+            <button class="back-button"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="file-manager-path">
+                <i class="fas fa-home"></i> Home
+            </div>
         </div>
-        <div class="content">
-            <h2>Files</h2>
-            <div class="file" data-file="file1"><i class="fas fa-folder-open"></i> apps</div>
-            <div class="file" data-file="file2"><i class="fas fa-folder-open"></i> ml_models</div>
-            <div class="file" data-file="file3"><i class="fas fa-folder-open"></i> py_scripts</div>
+        <div class="file-manager-grid">
+            <div class="file" data-file="file1">
+                <i class="fas fa-folder-open"></i>
+                <span class="file-name">Apps</span>
+            </div>
+            <div class="file" data-file="file2">
+                <i class="fas fa-folder-open"></i>
+                <span class="file-name">ML Models</span>
+            </div>
+            <div class="file" data-file="file3">
+                <i class="fas fa-folder-open"></i>
+                <span class="file-name">Python Scripts</span>
+            </div>
         </div>
     </div>
+</div>
+
     <div class="window" id="settings">
     <div class="title-bar">
         <span>Settings</span>
