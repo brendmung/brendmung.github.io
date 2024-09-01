@@ -573,3 +573,26 @@ canvas {
 .dark-theme .content li:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.skills-list i {
+    width: 25px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.fa-java { color: #007396; }
+.fa-python { color: #3776AB; }
+.fa-js { color: #F7DF1E; }
+.fa-html5 { color: #E34F26; }
+.fa-css3-alt { color: #1572B6; }
+.fa-code { color: #555555; }
