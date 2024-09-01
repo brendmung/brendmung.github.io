@@ -307,6 +307,7 @@ canvas {
 
 .close-button:hover {
     background-color: rgba(255, 0, 0, 0.7);
+    margin-top: 2px;
 }
 
 .dark-theme {
