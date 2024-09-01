@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 body {
     margin: 0;
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica', Arial, sans-serif;
+    font-family: 'Poppins','Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica', Arial, sans-serif;
     background-image: url('assets/wall_light.jpg');
     background-color: #000;
     background-size: cover;
-    height: 100vh;
     overflow: hidden;
     transition: background-color 0.5s;
     transition: background-image 1.0s ease;
@@ -30,14 +31,14 @@ canvas {
         }
 
         .about-me-container h1 {
-            font-size: 24px;
+            font-size: 22px;
             color: #333;
             margin-bottom: 10px;
         }
 
         .about-me-container p {
-            font-size: 16px;
-            color: #666;
+            font-size: 14px;
+            color: #333;
             text-align: justify;
             line-height: 1.5;
         }
@@ -79,14 +80,14 @@ canvas {
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .music-button {
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .taskbar-icon {
@@ -94,7 +95,7 @@ canvas {
     cursor: pointer;
     height: 80%;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .taskbar-icons {
@@ -284,7 +285,7 @@ canvas {
 }
 
 .setting-option i {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
@@ -341,7 +342,7 @@ canvas {
 
 .close-button:hover {
     background-color: rgba(255, 0, 0, 0.7);
-    padding-top: -2px;
+    padding-bottom: 2px;
 }
 
 .dark-theme {
@@ -366,7 +367,10 @@ canvas {
 .dark-theme .start-menu-item,
 .dark-theme .file,
 .dark-theme .desktop-label,
-.dark-theme .setting-option {
+.dark-theme .setting-option,
+.dark-theme .about-me-container h1,
+.dark-theme .about-me-container p
+ {
     color: white;
 }
 
@@ -469,15 +473,16 @@ canvas {
     background: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
 .contact-grid a:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
 }
 
 .contact-grid .email {
@@ -537,7 +542,7 @@ canvas {
 
 .content h2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 20px;
 }
 
@@ -554,16 +559,23 @@ canvas {
     background-color: rgba(0, 0, 0, 0.05);;
     padding: 10px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    cursor: pointer;
 }
 
 .content li:hover {
-    background-color: rgba(0, 0, 0, 0.05);;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
 }
+
+.content li strong {
+    color: #1376ed;
+}
+
 
 /* Dark Theme Adjustments */
 .dark-theme .content li {
@@ -578,19 +590,49 @@ canvas {
 .skills-list {
     list-style-type: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Ensures 2 columns */
+    gap: 15px; /* Space between items */
 }
 
 .skills-list li {
-    margin-bottom: 10px;
-    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills-list li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
 }
 
 .skills-list i {
-    width: 25px;
-    margin-right: 10px;
-    text-align: center;
+    display: block;
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
+/* Dark theme adjustments */
+.dark-theme .skills-list li {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .skills-list li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .skills-list {
+        grid-template-columns: 1fr;  /* Stacks items in a single column on smaller screens */
+    }
+}
 .fa-java { color: #007396; }
 .fa-python { color: #3776AB; }
 .fa-js { color: #F7DF1E; }
