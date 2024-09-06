@@ -243,7 +243,6 @@ canvas {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: move;
 }
 
 .window .content {
