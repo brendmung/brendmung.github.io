@@ -9,6 +9,11 @@ body {
     overflow: hidden;
     transition: background-color 0.5s;
     transition: background-image 1.0s ease;
+    overscroll-behavior: none;
+    user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 canvas {
