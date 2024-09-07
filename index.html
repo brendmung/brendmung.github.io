@@ -174,12 +174,24 @@
             <span>File Manager</span>
             <button class="close-button">✖</button>
         </div>
-        <div class="content">
-            <h2>Files</h2>
-            <div class="file" data-file="file1"><i class="fas fa-folder-open"></i> apps</div>
-            <div class="file" data-file="file2"><i class="fas fa-folder-open"></i> ml_models</div>
-            <div class="file" data-file="file3"><i class="fas fa-folder-open"></i> python_scripts</div>
+        <div style="display: flex; flex: 1; overflow: hidden;">
+            <div class="sidebar">
+                <ul id="sidebar-tabs">
+                    <li class="active" data-tab="this-pc">This PC</li>
+                    <li data-tab="apps">Apps</li>
+                    <li data-tab="py-scripts">Python Scripts</li>
+                    <li data-tab="ml-models">MLearning</li>
+                    <li data-tab="other">Other</li>
+                </ul>
+            </div>
+            <div class="content">
+                <div id="breadcrumbs">This PC</div>
+                <div id="file-list" class="file-list">
+                    <!-- File items will be dynamically added here -->
+                </div>
+            </div>
         </div>
+
     </div>
 
     <div class="window" id="settings">
