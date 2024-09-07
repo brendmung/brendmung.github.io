@@ -45,23 +45,29 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Event listeners for start menu and windows
-    startMenuIcon.addEventListener('click', () => {
-        const startMenu = document.querySelector('.start-menu');
-
-        if (startMenu.classList.contains('active')) {
-            startMenu.classList.remove('active');
-            setTimeout(() => {
-                startMenu.style.display = 'none';
-            }, 300);
-        } else {
-            startMenu.style.display = 'flex';
-            startMenu.style.left = `${startMenuIcon.getBoundingClientRect().left}px`;
-            setTimeout(() => {
-                startMenu.classList.add('active');
-            }, 10);
-        }
+// Function to close all open windows with animation
+function closeAllWindows() {
+    const windows = document.querySelectorAll('.window');
+    
+    windows.forEach(window => {
+        const windowId = window.id;
+        window.classList.remove('show');
+        
+        setTimeout(() => {
+            window.style.display = 'none';
+        }, 300); // This duration matches the animation time (300ms)
     });
+
+    document.querySelectorAll('.desktop-icon-container, .taskbar-icon').forEach(icon => {
+        icon.classList.remove('active');
+    });
+}
+
+
+// Event listener for Start Menu icon to close all windows
+startMenuIcon.addEventListener('click', () => {
+    closeAllWindows();
+});
 
     document.querySelectorAll('.desktop-icon-container, .start-menu-item, .taskbar-icon').forEach(icon => {
         icon.addEventListener('click', (e) => {
@@ -180,3 +186,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, minLoadTime);
 });
+
+const tabs = document.querySelectorAll('#sidebar-tabs li');
+        const breadcrumbs = document.getElementById('breadcrumbs');
+        const fileList = document.getElementById('file-list');
+
+                const tabContents = {
+            'this-pc': {
+                type: 'welcome',
+                content: `
+                    <h2>Explore!</h2>
+                `
+            },
+            'apps': [
+                { name: 'Ping-r.apk', icon: 'fab fa-android android-icon', url: 'https://github.com/brendmung/Ping-r/blob/main/Ping-r%20v1.0.6b.apk' }
+            ],
+            'py-scripts': [
+                { name: 'adv-image-info.py', icon: 'fab fa-python python-icon', url: 'https://github.com/brendmung/image-metadata-extractor' },
+                { name: 'save-win-images.py', icon: 'fab fa-python python-icon', url: 'https://github.com/brendmung/python-scripts/blob/main/save-windows-spotlight-wallpapers.py' },
+            ],
+            'ml-models': [
+                { name: 'jump-game-ai', icon: 'fas fa-brain brain-icon', url: 'https://github.com/brendmung/jump-game-ai' },
+                { name: 'forex-prediction-lstm', icon: 'fas fa-project-diagram project-diagram-icon', url: 'https://github.com/brendmung/forex-prediction-lstm' },
+            ],
+            'other': [
+                { name: '.nomedia', icon: 'fas fa-file-code file-code-icon', url: '' },
+            ]
+        };
+
+        function updateContent(tabName) {
+            // Fade out
+            fileList.classList.add('fade-out');
+            
+            setTimeout(() => {
+                breadcrumbs.textContent = tabName.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                fileList.innerHTML = '';
+                
+                const content = tabContents[tabName];
+                if (content.type === 'welcome') {
+                    fileList.innerHTML = content.content;
+                } else {
+                    content.forEach(item => {
+                        const fileItem = document.createElement('div');
+                        fileItem.className = 'file-item';
+                        fileItem.innerHTML = `
+                            <i class="${item.icon}"></i>
+                            <div class="file-name">${item.name}</div>
+                        `;
+                        fileItem.onclick = () => window.open(item.url, '_blank');
+                        fileList.appendChild(fileItem);
+                    });
+                }
+
+                // Fade in
+                setTimeout(() => {
+                    fileList.classList.remove('fade-out');
+                    fileList.classList.add('fade-in');
+                }, 50);
+
+                // Remove the fade-in class after animation completes
+                setTimeout(() => {
+                    fileList.classList.remove('fade-in');
+                }, 300);
+            }, 300); // This timeout should match the transition duration
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                updateContent(tab.dataset.tab);
+            });
+        });
+
+        // Initialize with "This PC" content
+        updateContent('this-pc');
