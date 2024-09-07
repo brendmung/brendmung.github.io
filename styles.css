@@ -193,6 +193,7 @@ canvas {
     padding: 10px;
     transform: translateY(20px);
     opacity: 0;
+    z-index: 2;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -643,3 +644,90 @@ canvas {
 .fa-html5 { color: #E34F26; }
 .fa-css3-alt { color: #1572B6; }
 .fa-code { color: #555555; }
+
+.sidebar {
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .sidebar li:hover, .sidebar li.active {
+            background-color: rgba(0, 120, 215, 0.1);
+            border-radius: 5px;	
+        }
+
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .file-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            height: 100px;
+        }
+
+        .file-item:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 5px;		
+        }
+
+        .file-item i {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .file-name {
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+.python-icon { color: #3776AB; }
+        .chrome-icon { color: #4285F4; }
+        .file-code-icon { color: #E44D26; }
+        .brain-icon { color: #00A67E; }
+        .project-diagram-icon { color: #FF6B6B; }
+        .folder-icon { color: #FFA500; }
+.content {
+            position: relative;
+        }
+
+        #file-list {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
