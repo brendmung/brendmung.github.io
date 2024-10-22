@@ -201,6 +201,7 @@ const tabs = document.querySelectorAll('#sidebar-tabs li');
             'apps': [
                 { name: 'Ping-r.apk', icon: 'fab fa-android android-icon', url: 'https://github.com/brendmung/Ping-r/releases' }
                 { name: 'AbodeLLM.apk', icon: 'fab fa-android android-icon', url: 'https://github.com/brendmung/abodellm/releases' }
+                { name: 'Noted!.apk', icon: 'fab fa-android android-icon', url: 'https://github.com/brendmung/Noted-App/releases' }
             ],
             'py-scripts': [
                 { name: 'adv-image-info.py', icon: 'fab fa-python python-icon', url: 'https://github.com/brendmung/image-metadata-extractor' },
